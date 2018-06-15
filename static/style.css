@@ -29,12 +29,12 @@ body {
   font-family: sans-serif; 
   background: #000; 
   display: block;
-  zoom: 45%;
+  zoom: 50%;
 }
 
 input,
 textarea {
-    font-size: 14px;
+    font-size: 30px;
     padding: 3px;
     caret-color: rgb(0, 200, 0);
     color: black;

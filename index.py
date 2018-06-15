@@ -29,7 +29,11 @@ def generate_zombie():
     img_io = StringIO.StringIO()
     img.save(img_io, 'JPEG', quality=100)
     img_io.seek(0)
-    return send_file(img_io, attachment_filename='wehome.jpg', as_attachment=True)
+    # adjustment for iOS
+    as_attachment = False
+    if request.user_agent.platform == "iphone":
+      as_attachment = True
+    return send_file(img_io, attachment_filename='wehome.jpg', as_attachment=as_attachment)
 
 
 if __name__ == "__main__":

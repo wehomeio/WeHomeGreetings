@@ -17,6 +17,9 @@ logger = app.logger
 @app.route('/', methods=['GET', 'POST'])
 def generate_zombie():
   if request.method == 'GET':
+    logger.error("Browser is {}".format(request.user_agent.browser))
+    logger.error("uas is {}".format(request.user_agent.string))
+    logger.error("platform is {}".format(request.user_agent.platform))
     return render_template('index.html')
   elif request.method == 'POST':
     name = request.form.get('name').strip()

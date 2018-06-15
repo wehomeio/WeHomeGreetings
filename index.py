@@ -31,7 +31,7 @@ def generate_zombie():
     img_io.seek(0)
     # adjustment for iOS
     as_attachment = False
-    if request.user_agent.platform == "iphone":
+    if request.user_agent.platform == "iphone" or "MicroMessenger" in request.user_agent.string:
       as_attachment = True
     return send_file(img_io, attachment_filename='wehome.jpg', as_attachment=as_attachment)
 

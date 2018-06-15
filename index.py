@@ -27,3 +27,7 @@ def generate_zombie():
     img.save(img_io, 'JPEG', quality=70)
     img_io.seek(0)
     return send_file(img_io, attachment_filename='wehome.jpg')
+
+
+if __name__ == "__main__":
+  app.run(host='0.0.0.0')

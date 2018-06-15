@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+from flask import render_template, Flask, request, send_file
+from draw import edit_img, INPUT_FILE, FONT, FONT_SIZE
+import StringIO
+import logging
+
+app = Flask(__name__)
+
+handler = logging.StreamHandler()
+handler.setLevel(logging.INFO)
+handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s'))
+app.logger.addHandler(handler)
+app.logger.handlers.extend(logging.getLogger("project-zombie.log").handlers)
+
+logger = app.logger
+
+@app.route('/', methods=['GET', 'POST'])
+def generate_zombie():
+  if request.method == 'GET':
+    return render_template('index.html')
+  elif request.method == 'POST':
+    name = request.form.get('name').strip()
+    logger.error("Sent love to {}".format(name.encode('utf-8')))
+    text_array = [name, "粽有吉祥如意伴您左右"]
+    img = edit_img('tmp', "tmp", text_array[0].encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, 1000, 10, True)
+    img_io = StringIO.StringIO()
+    img.save(img_io, 'JPEG', quality=70)
+    img_io.seek(0)
+    return send_file(img_io, attachment_filename='wehome.jpg')

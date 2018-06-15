@@ -1,0 +1,14 @@
+body { 
+  font-family: sans-serif; 
+  background: #000; 
+}
+
+input,
+textarea {
+    font-size: 14px;
+    padding: 3px;
+    caret-color: rgb(0, 200, 0);
+    color: black;
+    text-shadow: 0px 0px 0px #000;
+    -webkit-text-fill-color: transparent;
+}

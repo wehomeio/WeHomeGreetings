@@ -26,7 +26,7 @@ def generate_zombie():
     img_io = StringIO.StringIO()
     img.save(img_io, 'JPEG', quality=100)
     img_io.seek(0)
-    return send_file(img_io, attachment_filename='wehome.jpg')
+    return send_file(img_io, attachment_filename='wehome.jpg', as_attachment=True)
 
 
 if __name__ == "__main__":

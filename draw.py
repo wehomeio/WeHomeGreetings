@@ -5,7 +5,7 @@ from PIL import ImageFont
 
 import math
 
-DRY_RUN = True
+DRY_RUN = False
 
 NAME_FILE = 'names.json'
 NAME_TXT = 'names.txt'

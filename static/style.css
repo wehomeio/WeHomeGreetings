@@ -1,6 +1,35 @@
+.center {
+  display: block;
+  text-align: -webkit-center;
+}
+
+.ascii {
+  color: white;
+}
+
+p {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+table {
+  display: block;
+}
+
+tbody {
+  display: block;
+  overflow: auto;
+  max-width: 95%;
+}
+
 body { 
   font-family: sans-serif; 
   background: #000; 
+  display: block;
+  zoom: 45%;
 }
 
 input,
@@ -11,4 +40,9 @@ textarea {
     color: black;
     text-shadow: 0px 0px 0px #000;
     -webkit-text-fill-color: transparent;
+}
+
+pre {
+  display: block;
+  margin: 1em 0px;
 }

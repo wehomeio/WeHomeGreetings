@@ -24,7 +24,7 @@ def generate_zombie():
     text_array = [name, "粽有吉祥如意伴您左右"]
     img = edit_img('tmp', "tmp", text_array[0].encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, 1000, 10, True)
     img_io = StringIO.StringIO()
-    img.save(img_io, 'JPEG', quality=70)
+    img.save(img_io, 'JPEG', quality=100)
     img_io.seek(0)
     return send_file(img_io, attachment_filename='wehome.jpg')
 

@@ -1,2 +1,5 @@
 names*
 output
+*.pyc
+venv
+log

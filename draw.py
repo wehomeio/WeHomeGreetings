@@ -10,8 +10,8 @@ DRY_RUN = False
 NAME_FILE = 'names.json'
 NAME_TXT = 'names.txt'
 OUTPUT_PATH = 'output'
-INPUT_FILE = 'input/zombie.jpg'
-FONT = 'font/Libian.ttc'
+INPUT_FILE = 'input/midautumn.jpg'
+FONT = 'font/WenDingTeYanKai-2.ttf'
 FONT_SIZE = 48
 
 def edit_img(output_path, output_prefix, output_file_name, input_file, font, font_size, text_array, lon, lon_delta, dry_run=True):
@@ -21,7 +21,8 @@ def edit_img(output_path, output_prefix, output_file_name, input_file, font, fon
   draw = ImageDraw.Draw(img)
   # 准备字体
   font = ImageFont.truetype(font, font_size)
-  color = (255,255,255,1)
+  # color = (255,255,255,1)
+  color = (243,194,126,1)
 
   for text in text_array:
     unicode_text = text
@@ -74,12 +75,13 @@ def process_normal_name_file(filename):
       print "Processed {}-{}".format(prefix, name.encode("utf-8"))
 
 if __name__ == "__main__":
+  edit_img(OUTPUT_PATH, "test", "杨柏生".encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, 1000, 10, DRY_RUN)
   ## investment users
-  name_set = set(parse_identity_json(NAME_FILE))
-  for name in name_set:
-    text_array = [name, "粽有吉祥如意伴您左右"]
-    edit_img(OUTPUT_PATH, "VIP投资用户", text_array[0].encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, 1000, 10, DRY_RUN)
-    print "Processed {}-{}".format("VIP投资用户", name.encode("utf-8"))
+  # name_set = set(parse_identity_json(NAME_FILE))
+  # for name in name_set:
+  #   text_array = [name, "粽有吉祥如意伴您左右"]
+  #   edit_img(OUTPUT_PATH, "VIP投资用户", text_array[0].encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, 1000, 10, DRY_RUN)
+  #   print "Processed {}-{}".format("VIP投资用户", name.encode("utf-8"))
 
-  ## other users
-  process_normal_name_file(NAME_TXT)
+  # ## other users
+  # process_normal_name_file(NAME_TXT)

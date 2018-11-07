@@ -24,8 +24,8 @@ def generate_zombie():
   elif request.method == 'POST':
     name = request.form.get('name').strip()
     logger.error("Sent love to {}".format(name.encode('utf-8')))
-    text_array = [name, "粽有吉祥如意伴您左右"]
-    img = edit_img('tmp', "tmp", text_array[0].encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, 1000, 10, True)
+    text_array = [name]
+    img = edit_img('tmp', "tmp", text_array[0].encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, 710, 10, True, offset=200)
     img_io = StringIO.StringIO()
     img.save(img_io, 'JPEG', quality=100)
     img_io.seek(0)

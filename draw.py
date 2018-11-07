@@ -10,11 +10,11 @@ DRY_RUN = False
 NAME_FILE = 'names.json'
 NAME_TXT = 'names.txt'
 OUTPUT_PATH = 'output'
-INPUT_FILE = 'input/zombie.jpg'
-FONT = 'font/Libian.ttc'
+INPUT_FILE = 'input/shanghai.jpg'
+FONT = 'font/PingFang.ttc'
 FONT_SIZE = 48
 
-def edit_img(output_path, output_prefix, output_file_name, input_file, font, font_size, text_array, lon, lon_delta, dry_run=True):
+def edit_img(output_path, output_prefix, output_file_name, input_file, font, font_size, text_array, lon, lon_delta, dry_run=True, offset= 0):
   img = Image.open(input_file)
   width, height = img.size
 
@@ -29,8 +29,8 @@ def edit_img(output_path, output_prefix, output_file_name, input_file, font, fon
       unicode_text = unicode(text,'UTF-8')
 
     text_width, text_height = font.getsize(unicode_text)  
-    # place in middle
-    lat = (width - text_width) / 2   
+    # place in middle plus offset
+    lat = (width - text_width) / 2 + offset
     draw_img(draw, lat, lon, unicode_text, font, color)
     # move to next line
     lon += text_height + lon_delta

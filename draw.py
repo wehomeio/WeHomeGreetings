@@ -10,9 +10,9 @@ DRY_RUN = False
 NAME_FILE = 'names.json'
 NAME_TXT = 'names.txt'
 OUTPUT_PATH = 'output'
-INPUT_FILE = 'input/zombie.jpg'
-FONT = 'font/Libian.ttc'
-FONT_SIZE = 48
+INPUT_FILE = 'input/wehome-christmas.jpeg'
+FONT = 'font/PingFang.ttc'
+FONT_SIZE = 38
 
 def edit_img(output_path, output_prefix, output_file_name, input_file, font, font_size, text_array, lon, lon_delta, dry_run=True):
   img = Image.open(input_file)
@@ -21,7 +21,7 @@ def edit_img(output_path, output_prefix, output_file_name, input_file, font, fon
   draw = ImageDraw.Draw(img)
   # 准备字体
   font = ImageFont.truetype(font, font_size)
-  color = (255,255,255,1)
+  color = (231,192,155,1)
 
   for text in text_array:
     unicode_text = text

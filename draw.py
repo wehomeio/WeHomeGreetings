@@ -7,12 +7,13 @@ import math
 
 DRY_RUN = False
 
-NAME_FILE = 'names.json'
 NAME_TXT = 'names.txt'
 OUTPUT_PATH = 'output'
 INPUT_FILE = 'input/zombie.jpg'
 FONT = 'font/Libian.ttc'
 FONT_SIZE = 48
+LONGITUDE = 1000
+COLOR =(255,255,255,1)
 
 def edit_img(output_path, output_prefix, output_file_name, input_file, font, font_size, text_array, lon, lon_delta, dry_run=True):
   img = Image.open(input_file)
@@ -21,7 +22,7 @@ def edit_img(output_path, output_prefix, output_file_name, input_file, font, fon
   draw = ImageDraw.Draw(img)
   # 准备字体
   font = ImageFont.truetype(font, font_size)
-  color = (255,255,255,1)
+  color = COLOR
 
   for text in text_array:
     unicode_text = text
@@ -60,26 +61,19 @@ def process_normal_name_file(filename):
         continue
       if "==" in raw_name:
         for name in names:
-          text_array = [name, "粽有吉祥如意伴您左右"]
-          edit_img(OUTPUT_PATH, prefix, text_array[0].encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, 1000, 10, DRY_RUN)
+          text_array = [name]
+          edit_img(OUTPUT_PATH, prefix, text_array[0].encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, LONGITUDE, 10, DRY_RUN)
           print "Processed {}-{}".format(prefix, name.encode("utf-8"))
         names = set()
-        prefix = raw_name.split("==")[1].strip().encode("utf-8")
+        prefix = raw_name.split("==")[1].strip()
         continue
       names.add(raw_name.strip().decode("utf-8"))
     ## last group
     for name in names:
-      text_array = [name, "粽有吉祥如意伴您左右"]
-      edit_img(OUTPUT_PATH, prefix, text_array[0].encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, 1000, 10, DRY_RUN)
+      text_array = [name]
+      edit_img(OUTPUT_PATH, prefix, text_array[0].encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, LONGITUDE, 10, DRY_RUN)
       print "Processed {}-{}".format(prefix, name.encode("utf-8"))
 
 if __name__ == "__main__":
-  ## investment users
-  name_set = set(parse_identity_json(NAME_FILE))
-  for name in name_set:
-    text_array = [name, "粽有吉祥如意伴您左右"]
-    edit_img(OUTPUT_PATH, "VIP投资用户", text_array[0].encode("utf-8"), INPUT_FILE, FONT, FONT_SIZE, text_array, 1000, 10, DRY_RUN)
-    print "Processed {}-{}".format("VIP投资用户", name.encode("utf-8"))
-
   ## other users
   process_normal_name_file(NAME_TXT)
